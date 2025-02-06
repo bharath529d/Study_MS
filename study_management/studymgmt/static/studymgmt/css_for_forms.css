@@ -1,0 +1,46 @@
+th,td{
+    text-align: start;
+    padding: 10px;
+    vertical-align: top;
+}
+
+.e-m{
+    color: red;
+    font-size: 0.8em;
+}
+
+input{
+    border: 2px solid blue;
+    width: 200px;
+    height: 20px;
+    outline: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+input:focus{
+    border: 3px solid green;
+    font-weight: bold;
+}
+
+textarea{
+    border: 2px solid blue;
+    outline: none;
+    width: 200px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+textarea:focus{
+    border: 3px solid green;
+    font-weight: bold;
+}
+
+
+select{
+    border: 2px solid blue;
+    width: 200px;
+    height: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}

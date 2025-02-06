@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Study Update
+{% endblock title %}
+
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'studymgmt/css_for_forms.css' %}">
+    <script src="{% static 'js/extra_functionalities.js' %}"></script>
+{% endblock css %}
+
+
+{% block body %}
+    <div class="titleof">
+        <h1> UPDATE YOUR STUDY DETAILS BELOW: </h1>
+    </div>
+    <form action="" method="POST" id="update_form">
+        {% csrf_token %}
+        <table class="ft">
+            {% for field in form %}
+            <tr>
+                <th class="colh">{{field.label_tag}}</th>
+                <td>{{field}}<br><span class='e-m'>{{field.errors}}</span></td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="m-b-container">
+            <div class="btn-container">
+                <a href="{% url 'main' %}"><button type="button" class="btn cancel-btn">CANCEL</button></a>
+                <button form="update_form" type="submit" class="btn gr-btn">SAVE</button>
+            <script>    
+                function alert_message(message){
+                    alert(message);
+                }
+            </script>
+            </div>
+        </div>
+    </form>
+{% endblock body%}

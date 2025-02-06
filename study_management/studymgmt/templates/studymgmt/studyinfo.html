@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Study Info
+{% endblock title %}
+
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'studymgmt/css_for_studyinfo.css' %}">
+{% endblock css %}
+
+
+{% block body %}
+    <div class="titleof">
+        <h1>{{study_name}}</h1>
+    </div>   
+    <table class="ft">
+            {% for field, value in studydata %}
+            <tr>
+                <th class="colh">{{field}}</th>
+                <td style="font-weight:bold; text-align: justify;">{{value}}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
+        <div class="m-b-container">
+            <a href="{% url 'main' %}"><button type="button" class="btn cancel-btn">CANCEL</button></a>
+        </div> 
+{% endblock body%}

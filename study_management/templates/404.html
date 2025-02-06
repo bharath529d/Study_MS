@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Page not found{% endblock title %}
+{% block css %}
+    <style>
+        button{
+            position: relative;
+            background-color: green; 
+            color: white;
+            margin-left: 5vh;
+        }
+        button:hover{
+            background-color: blue;
+        }
+    </style>
+{% endblock css%}
+{% block body %}
+    <h1>OOPS, PAGE NOT FOUND</h1><br>
+    <a href="{% url 'main' %}"><button type="button">GO TO MAIN</button><a href="{% url 'main' %}"></a>
+{% endblock body %}   

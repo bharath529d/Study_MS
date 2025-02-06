@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Main
+{% endblock title %}
+
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'studymgmt/main.css' %}">
+    <script src="{% static 'js/extra_functionalities.js' %}"></script>
+{% endblock css %}
+
+
+{% block body %}
+    <header class="titleof">
+        <h1>STUDY MANAGEMENT</h1>
+    </header>
+    
+    {% if empty %}
+        <h1 style="text-align: center;">NO STUDY AT PRESENT</h1>
+    {% else %}
+    </table>
+    </div>  
+        <div class="t-container">
+                <table>
+                <thead>
+                        <tr class="colh" style="background-color:lightgray;">
+                            <th style="width: 3%";> <input form="delete_form" class=".checkbox" type="checkbox" 
+                                name="delete_all_objects" value="1" onclick="checkAll(this)">
+                            </th>
+                            {% for field in fields %}
+                                
+                                {% if field != "STUDY DESCRIPTION" %}
+                                    <th>{{field}}</th>
+                                {% else %}
+                                    <th style="width:30%;">{{field}}</th> 
+                                {% endif %}
+                            {% endfor %}
+                            <th colspan="2" style="width: 20%;">ACTIONS</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    <!-- Below we are looping through the study objects/records to display each row. (We observe DRY philosophly of django)-->
+                    {% for study in studies %}
+                        <tr>
+                            <td><input form="delete_form" class=".checkbox" type="checkbox" name="selected_objects_ids" value="{{study.study_id|stringformat:'s'}}"></td>
+                            <td>{{study.study_name|truncatechars:15}}</td>
+                            <td>{{study.study_phase}}</td>
+                            <td>{{study.sponser_name|truncatechars:15}}</td>
+                            <td class="justify-text">{{study.study_descrip|truncatewords:20}}</td>
+                            <td><a href="{% url 'studyinfo' study.study_id %}"><button class="tbtn">VIEW</button></a></td>
+                            <td ><a href="{% url 'update_study' study.study_id %}"><button class="tbtn">EDIT</button></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %} 
+    </div>
+    <div class="m-b-container-fixed" >
+        <div class="m-b-container">
+            <div class="btn-container">
+                <a href="{% url 'addstudy' %}"><button class="btn gr-btn" type="button">Add Study</button></a>
+                <form id="delete_form" action="" method="POST">
+                    {% csrf_token %}
+                    <button class="btn cancel-btn" type="submit">Delete Study</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock body%}

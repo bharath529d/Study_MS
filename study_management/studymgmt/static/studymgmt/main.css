@@ -1,0 +1,44 @@
+table, th, td{
+    border: 2px solid blue;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 20px;
+}
+
+.t-container{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+
+tr:hover{
+    background-color: lightgrey;
+}
+.m-b-container{
+    bottom: 0px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+/*table buttons - view, edit*/
+.tbtn{
+    background-color: green;
+    border-radius: 5px;
+    color: white;
+}
+
+.tbtn:hover{
+    background-color: blue;
+    box-shadow: 3px 3px 5px blue;
+}
+
+table{
+    table-layout:fixed;
+    width: 95%;
+}
+
+input{
+    transform: scale(2.5);
+}

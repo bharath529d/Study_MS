@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Add Study
+{% endblock title %}
+
+
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'studymgmt/css_for_forms.css' %}">
+{% endblock css %}
+
+
+{% block body %}
+    <div class="titleof">
+    <h1> ADD YOUR STUDY DETAILS </h1>
+    </div>
+    <form action="" method="POST" autocomplete="off">
+        {% csrf_token %}
+        <table class="ft">
+            {% for field in form %}
+            <tr>
+                <th class="colh">{{field.label_tag}}</th>
+                <td>{{field}}<span class="e-m">{{field.errors}}</span></td>   
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="m-b-container">
+            <div class="btn-container">
+                <a href="{% url 'main' %}"><button type="button" class="btn cancel-btn">CANCEL</button></a>
+                <button type="submit" class="btn gr-btn">SAVE</button>
+            </div>
+        </div>
+    </form>
+{% endblock body%}
